@@ -1,13 +1,14 @@
+import art
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
             'v', 'w', 'x', 'y', 'z']
+print(art.logo)
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+run = "yes"
 
 
-# TODO-1: Combine the encrypt() and decrypt() functions into a single function called caesar().
+
 def caesar(start_text, shift_amount, code_direction):
+
     end_text = ""
     # Change shift based on direction
     if code_direction == "decode":
@@ -36,5 +37,12 @@ def caesar(start_text, shift_amount, code_direction):
     print(end_text)
 
 
-# TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
-caesar(start_text=text, shift_amount=shift, code_direction=direction)
+while run == "yes":
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    if shift > 26:
+        shift %= 26
+    caesar(start_text=text, shift_amount=shift, code_direction=direction)
+
+    run = input("Would you like to run the program again? (yes or no):\n").lower()
